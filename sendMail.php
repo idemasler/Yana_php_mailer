@@ -39,7 +39,7 @@ try {
     //Set PHPMailer to use SMTP.
     $mail->isSMTP();
     //Set SMTP host name                      
-    $mail->Host = 'mail.smtp2go.com';
+    $mail->Host = 'smtp2go.com';
     //Set this to true if SMTP host requires authentication to send email
     $mail->SMTPAuth = true;
     //Provide username and password
