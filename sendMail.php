@@ -58,7 +58,7 @@
 //     header('Content-Type: application/json');
 //     echo json_encode($response);
 // } else {
- 
+
 //     http_response_code(405); 
 //     echo 'Method Not Allowed';
 // }
@@ -74,12 +74,14 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 
+require 'phpMailer/vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+// require 'phpmailer/PHPMailer.php';
+// require 'phpmailer/SMTP.php';
+// require 'phpmailer/Exception.php';
 
 
 $name = $_POST['name'];
@@ -87,8 +89,6 @@ $email = $_POST['email'];
 $quantity = $_POST['quantity'];
 $destination = $_POST['destination'];
 $message = $_POST['message'];
-
-echo ($name.'_______'.$email.'_________'.$quantity.'__________'.$destination.'__________'.$message);
 
 // Формування листа
 $title = "Mail from Plan Voyage";
@@ -101,34 +101,29 @@ $body = "
 ";
 
 // Настройки PHPMailer
-$mail = new PHPMailer\PHPMailer\PHPMailer();
+$mail = new PHPMailer(true);
+
+echo ($title.'________'.$body);
+
 try {
     $mail->isSMTP();   
     $mail->CharSet = "UTF-8";
-    $mail->SMTPAuth   = true;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 2;
     $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
-
-    // Настройки пошти
-    $mail->Host       = 'smtp.gmail.com'; 
-    $mail->SMTPSecure = ‘TLS’;
-    $mail->Port       = 587;
+    $mail->Host = 'smtp.gmail.com'; 
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->setFrom('PlanVoyageNewMail@mail.com', 'new client'); // Адрес пошти
-    $mail->addAddress('yanatraveladvisor@gmail.com');  
+    $mail->addAddress('t0n9hua@gmail.com');  
 
-
-// Відправка
-$mail->isHTML(true);
-$mail->Subject = $title;
-$mail->Body = $body;    
-
-// Перевірка
-if ($mail->send()) {$result = "success";} 
-else {$result = "error";}
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;    
+    $mail->send();
+    echo "Mail has been sent successfully!";
 
 } catch (Exception $e) {
-    $result = "error";
-    $status = "Причина помилки: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-echo json_encode(["result" => $result, "status" => $status]);
+?>
