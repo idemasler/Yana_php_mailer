@@ -1,13 +1,13 @@
 <?php
 // Файлы phpmailer
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Headers: Content-Type");
 
-require 'phpMailer/vendor/autoload.php';
+// require 'phpMailer/vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
 
 // require 'phpmailer/PHPMailer.php';
 // require 'phpmailer/SMTP.php';
@@ -31,7 +31,7 @@ $message = $_POST['message'];
 // ";
 
 // Настройки PHPMailer
-$mail = new PHPMailer(true);
+// $mail = new PHPMailer(true);
 
 echo ($name.'________'.$email.'________'.$quantity.'________'.$destination.'________'.$message);
 
