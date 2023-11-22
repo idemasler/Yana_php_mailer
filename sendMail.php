@@ -88,6 +88,8 @@ $quantity = $_POST['quantity'];
 $destination = $_POST['destination'];
 $message = $_POST['message'];
 
+echo ($name.'_______'.$email.'_________'.$quantity.'__________'.$destination.'__________'.$message);
+
 // Формування листа
 $title = "Mail from Plan Voyage";
 $body = "
