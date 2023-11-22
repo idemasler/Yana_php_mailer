@@ -49,9 +49,9 @@ try {
     $mail->SMTPSecure = "tls";
     //Set TCP port to connect to
     $mail->Port = 587;
-    $mail->From = 'devsonspree@gmail.com';
+    $mail->From = $email;
     $mail->FromName = $name;
-    $mail->addAddress($email, "Ugur");
+    $mail->addAddress('devsonspree@gmail.com', "Ugur");
     $mail->isHTML(true);
     $mail->Subject = $title;
     $mail->Body = $body;
