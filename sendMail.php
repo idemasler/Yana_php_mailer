@@ -51,7 +51,7 @@ try {
     $mail->Port = 587;
     $mail->From = 'devsonspree@gmail.com';
     $mail->FromName = $name;
-    $mail->addAddress('t0n9hua@gmail.com', "Ugur");
+    $mail->addAddress($email, "Ugur");
     $mail->isHTML(true);
     $mail->Subject = $title;
     $mail->Body = $body;
