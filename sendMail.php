@@ -31,29 +31,29 @@ $body = "
 ";
 
 // Настройки PHPMailer
-// $mail = new PHPMailer(true);
+$mail = new PHPMailer(true);
 
 echo ($title.'________'.$body);
 
-// try {
-//     $mail->isSMTP();   
-//     $mail->CharSet = "UTF-8";
-//     $mail->SMTPAuth = true;
-//     $mail->SMTPDebug = 2;
-//     $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
-//     $mail->Host = 'smtp.gmail.com'; 
-//     $mail->SMTPSecure = 'tls';
-//     $mail->Port = 587;
-//     $mail->setFrom('PlanVoyageNewMail@mail.com', 'new client'); // Адрес пошти
-//     $mail->addAddress('t0n9hua@gmail.com');  
+try {
+    $mail->isSMTP();   
+    $mail->CharSet = "UTF-8";
+    $mail->SMTPAuth = true;
+    $mail->SMTPDebug = 2;
+    $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
+    $mail->Host = 'smtp.gmail.com'; 
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    $mail->setFrom('PlanVoyageNewMail@mail.com', 'new client'); // Адрес пошти
+    $mail->addAddress('t0n9hua@gmail.com');  
 
-//     $mail->isHTML(true);
-//     $mail->Subject = $title;
-//     $mail->Body = $body;    
-//     $mail->send();
-//     echo "Mail has been sent successfully!";
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;    
+    $mail->send();
+    echo "Mail has been sent successfully!";
 
-// } catch (Exception $e) {
-//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-// }
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
