@@ -33,27 +33,30 @@ $body = "
 // Настройки PHPMailer
 $mail = new PHPMailer(true);
 
-echo ($title.'________'.$body);
+echo ($title . '________' . $body);
 
 try {
-    $mail->isSMTP();   
-    $mail->CharSet = "UTF-8";
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name                      
+    $mail->Host = 'mail.smtp2go.com';
+    //Set this to true if SMTP host requires authentication to send email
     $mail->SMTPAuth = true;
-    $mail->SMTPDebug = 2;
-    $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
-    $mail->Host = 'smtp.gmail.com'; 
-    $mail->SMTPSecure = 'tls';
+    //Provide username and password
+    $mail->Username = 'freelancer-smtp';
+    $mail->Password = 'Devsenior0312!!!';
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    //Set TCP port to connect to
     $mail->Port = 587;
-    $mail->setFrom('PlanVoyageNewMail@mail.com', 'new client'); // Адрес пошти
-    $mail->addAddress('t0n9hua@gmail.com');  
-
+    $mail->From = $email;
+    $mail->FromName = $name;
+    $mail->addAddress('t0n9hua@gmail.com', "Ugur");
     $mail->isHTML(true);
     $mail->Subject = $title;
-    $mail->Body = $body;    
+    $mail->Body = $body;
     $mail->send();
     echo "Mail has been sent successfully!";
-
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-?>
