@@ -4,10 +4,10 @@
 // header("Access-Control-Allow-Origin: *");
 // header("Access-Control-Allow-Headers: Content-Type");
 
-// require 'phpMailer/vendor/autoload.php';
+require 'phpMailer/vendor/autoload.php';
 
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 // require 'phpmailer/PHPMailer.php';
 // require 'phpmailer/SMTP.php';
@@ -21,19 +21,19 @@ $destination = $_POST['destination'];
 $message = $_POST['message'];
 
 // Формування листа
-// $title = "Mail from Plan Voyage";
-// $body = "
-// <b>name:</b> $name<br>
-// <b>email:</b> $email<br>
-// <b>Number of travelers:</b> $quantity<br>
-// <b>destination:</b> $destination<br><br>
-// <b>message:</b><br>$message
-// ";
+$title = "Mail from Plan Voyage";
+$body = "
+<b>name:</b> $name<br>
+<b>email:</b> $email<br>
+<b>Number of travelers:</b> $quantity<br>
+<b>destination:</b> $destination<br><br>
+<b>message:</b><br>$message
+";
 
 // Настройки PHPMailer
 // $mail = new PHPMailer(true);
 
-echo ($name.'________'.$email.'________'.$quantity.'________'.$destination.'________'.$message);
+echo ($title.'________'.$body);
 
 // try {
 //     $mail->isSMTP();   
