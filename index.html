@@ -46,7 +46,7 @@
   <script type="text/javascript">
     (function () {
       // https://dashboard.emailjs.com/admin/account
-      emailjs.init('ZDdnSEztzW3Y9qiz9');
+      emailjs.init('77flKCWx7MJfRipd_');
     })();
   </script>
   <script type="text/javascript">
@@ -54,9 +54,15 @@
       document.getElementById('contact-form').addEventListener('submit', function (event) {
         event.preventDefault();
         // these IDs from the previous steps
-        emailjs.sendForm('service_i9wa36j', 'template_h3yux1p', this)
+        emailjs.sendForm('service_v2ebzaj', 'template_utzxtff', this)
           .then(function () {
             console.log('SUCCESS!');
+            document.getElementsByName('user_name')[0].value = '';
+            document.getElementsByName('user_phone')[0].value = '';
+            document.getElementsByName('user_email')[0].value = '';
+            document.getElementsByName('quantity')[0].value = '';
+            document.getElementsByName('destination')[0].value = '';
+            document.getElementsByName('message')[0].value = '';
           }, function (error) {
             console.log('FAILED...', error);
           });
